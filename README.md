@@ -58,6 +58,20 @@ python - <<'PY'
 import torch; print(torch.__version__, torch.version.cuda)
 PY
 # Expected: 1.12.1  11.6
+
+python - <<'PY'
+import torch, mmcv, mmdet, mmdet3d, mmseg
+print("torch      :", torch.__version__, "CUDA", torch.version.cuda)
+print("mmcv-full  :", mmcv.__version__)
+print("mmdet      :", mmdet.__version__)
+print("mmdet3d    :", mmdet3d.__version__)
+print("mmseg      :", mmseg.__version__)
+PY
+
+python - <<'PY'
+from bevdepth.ops.voxel_pooling_inference import voxel_pooling_inference
+print("Wrapper OK :", voxel_pooling_inference)          # should be a <function …>
+PY
 ```
 
 ### 1️⃣ Generate NuScenes Metadata
