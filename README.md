@@ -105,7 +105,7 @@ python scripts/gen_info.py \
   --save_dir /workspace/data/nuScenes_BEVDepth
 ```
 
-### 2️⃣ Download Pretrained Weights
+### Download pretrained weights
 
 ```bash
 mkdir -p pretrained
