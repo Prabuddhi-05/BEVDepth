@@ -115,10 +115,8 @@ wget https://github.com/Megvii-BaseDetection/BEVDepth/releases/download/v0.0.2/b
 ### Compile
 
 ```bash
-python setup.py clean --all
-rm -rf build/ BEVDepth.egg-info/
-python setup.py develop --no-deps
-``
+python setup.py develop 
+```
 
 ### Re-compile CUDA Ops (only if upgrading Torch/CUDA) (Optional)
 
@@ -131,7 +129,7 @@ python setup.py develop --no-deps
 
 ## Running BEVDepth
 
-### Sanity Check: Evaluation
+### Evaluation
 
 ```bash
 python bevdepth/exps/nuscenes/mv/bev_depth_lss_r50_256x704_128x128_24e_2key.py \
@@ -141,7 +139,7 @@ python bevdepth/exps/nuscenes/mv/bev_depth_lss_r50_256x704_128x128_24e_2key.py \
 
 > Expected: mAP ≈ 0.33 / NDS ≈ 0.44
 
-### Training / Fine-tuning
+### Fine-tuning
 
 ```bash
 python bevdepth/exps/nuscenes/mv/bev_depth_lss_r50_256x704_128x128_24e_2key.py \
@@ -149,7 +147,7 @@ python bevdepth/exps/nuscenes/mv/bev_depth_lss_r50_256x704_128x128_24e_2key.py \
   --gpus 1 -b 1
 ```
 
-- Increase `-b` and `--gpus` based on hardware availability.
+- Increase `-b`(batch size - 1 sample per gpu) and `--gpus` based on hardware availability.
 
 ---
 
