@@ -1,3 +1,4 @@
+import argparse
 import mmcv
 import numpy as np
 from nuscenes.nuscenes import NuScenes
@@ -146,23 +147,44 @@ def generate_info(nusc, scenes, max_cam_sweeps=6, max_lidar_sweeps=10):
     return infos
 
 
+#def main():
+    #trainval_nusc = NuScenes(version='v1.0-trainval',
+                             #dataroot='./data/nuScenes/',
+                             #verbose=True)
+    #train_scenes = splits.train
+    #val_scenes = splits.val
+    #train_infos = generate_info(trainval_nusc, train_scenes)
+    #val_infos = generate_info(trainval_nusc, val_scenes)
+    #mmcv.dump(train_infos, './data/nuScenes/nuscenes_infos_train.pkl')
+    #mmcv.dump(val_infos, './data/nuScenes/nuscenes_infos_val.pkl')
+    #test_nusc = NuScenes(version='v1.0-test',
+                         #dataroot='./data/nuScenes/',
+                         #verbose=True)
+    #test_scenes = splits.test
+    #test_infos = generate_info(test_nusc, test_scenes)
+    #mmcv.dump(test_infos, './data/nuScenes/nuscenes_infos_test.pkl')
+
 def main():
-    trainval_nusc = NuScenes(version='v1.0-trainval',
-                             dataroot='./data/nuScenes/',
-                             verbose=True)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dataroot', required=True, help='Path to nuScenes root dir')
+    parser.add_argument('--save_dir', required=True, help='Where to save the generated .pkl files')
+    args = parser.parse_args()
+
+    trainval_nusc = NuScenes(version='v1.0-trainval', dataroot=args.dataroot, verbose=True)
     train_scenes = splits.train
     val_scenes = splits.val
+
     train_infos = generate_info(trainval_nusc, train_scenes)
     val_infos = generate_info(trainval_nusc, val_scenes)
-    mmcv.dump(train_infos, './data/nuScenes/nuscenes_infos_train.pkl')
-    mmcv.dump(val_infos, './data/nuScenes/nuscenes_infos_val.pkl')
-    test_nusc = NuScenes(version='v1.0-test',
-                         dataroot='./data/nuScenes/',
-                         verbose=True)
-    test_scenes = splits.test
-    test_infos = generate_info(test_nusc, test_scenes)
-    mmcv.dump(test_infos, './data/nuScenes/nuscenes_infos_test.pkl')
 
+    mmcv.dump(train_infos, f'{args.save_dir}/nuscenes_infos_train.pkl')
+    mmcv.dump(val_infos, f'{args.save_dir}/nuscenes_infos_val.pkl')
+
+    test_nusc = NuScenes(version='v1.0-test', dataroot=args.dataroot, verbose=True)
+    test_scenes = splits.test
+
+    test_infos = generate_info(test_nusc, test_scenes)
+    mmcv.dump(test_infos, f'{args.save_dir}/nuscenes_infos_test.pkl')
 
 if __name__ == '__main__':
     main()
