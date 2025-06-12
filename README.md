@@ -139,7 +139,7 @@ python bevdepth/exps/nuscenes/mv/bev_depth_lss_r50_256x704_128x128_24e_2key.py \
 
 > Expected: mAP ≈ 0.33 / NDS ≈ 0.44
 
-### Fine-tuning
+### Training
 
 ```bash
 python bevdepth/exps/nuscenes/mv/bev_depth_lss_r50_256x704_128x128_24e_2key.py \
@@ -151,17 +151,7 @@ python bevdepth/exps/nuscenes/mv/bev_depth_lss_r50_256x704_128x128_24e_2key.py \
 
 ---
 
-## Code Changes Summary
-
-| File                                            | Change                                             | Reason                           |
-| ----------------------------------------------- | -------------------------------------------------- | -------------------------------- |
-| `scripts/gen_info.py`                           | Added `argparse` for `--dataroot` and `--save_dir` | Flexible output directories      |
-| `bev_depth_lss_r50_256x704_128x128_24e_2key.py` | Adjusted experiment name, dataset path             | Clean experiment structure       |
-| All other code                                  | Unchanged                                          | Only dataset path logic modified |
-
----
-
-## Library Versions (Fully Frozen)
+## Library versions
 
 ```
 torch-1.12.1+cu116        mmcv-full-1.6.0
@@ -170,33 +160,3 @@ torchaudio-0.12.1+cu116   mmdet3d-1.0.0rc4
 cuda-11.6 runtime         mmsegmentation-0.26.0
 numba-0.56.4              llvmlite-0.39.1
 ```
-
-> Rebuild = exact reproduction.
-
----
-
-## Troubleshooting
-
-| Issue                             | Solution                                                           |
-| --------------------------------- | ------------------------------------------------------------------ |
-| MMCV version conflict             | `pip install mmcv-full==1.6.0 -f ...`                              |
-| CUDA handle errors                | Ensure Torch/CUDA versions match image.                            |
-| Missing voxel\_pooling\_inference | `python setup.py clean --all && python setup.py develop --no-deps` |
-| VS Code remote can't see packages | Always attach to the container correctly (`bevdepth-cu116`).       |
-
----
-
-## 📄 Citation
-
-```bibtex
-@article{li2022bevdepth,
-  title={BEVDepth: Acquisition of Reliable Depth for Multi-view 3D Object Detection},
-  author={Li, Yinhao and Ge, Zheng and ...},
-  journal={arXiv preprint arXiv:2206.10092},
-  year={2022}
-}
-```
-
----
-
-*Happy BEV research! 🚀 — Feel free to open issues or PRs for updates or fixes.*
