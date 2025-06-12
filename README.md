@@ -112,15 +112,21 @@ mkdir -p pretrained
 wget https://github.com/Megvii-BaseDetection/BEVDepth/releases/download/v0.0.2/bev_depth_lss_r50_256x704_128x128_24e_2key.pth \
   -P pretrained/
 ```
+### Compile
 
-### 3️⃣ (Optional) Re-compile CUDA Ops (only if upgrading Torch/CUDA)
+```bash
+python setup.py clean --all
+rm -rf build/ BEVDepth.egg-info/
+python setup.py develop --no-deps
+``
+
+### Re-compile CUDA Ops (only if upgrading Torch/CUDA) (Optional)
 
 ```bash
 python setup.py clean --all
 rm -rf build/ BEVDepth.egg-info/
 python setup.py develop --no-deps
 ```
-
 ---
 
 ## Running BEVDepth
