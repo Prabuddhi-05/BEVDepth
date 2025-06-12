@@ -69,6 +69,22 @@ print("mmdet      :", mmdet.__version__)
 print("mmdet3d    :", mmdet3d.__version__)
 print("mmseg      :", mmseg.__version__)
 PY
+# Expected:
+# torch      : 1.12.1+cu116 CUDA 11.6
+# mmcv-full  : 1.6.0
+# mmdet      : 2.25.0
+# mmdet3d    : 1.0.0rc4
+# mmseg      : 0.26.0
+
+python - <<'PY'
+import numba, llvmlite, numpy as np
+print("numba    :", numba.__version__)
+print("llvmlite :", llvmlite.__version__)
+print("numpy    :", np.__version__)
+PY
+# Expected:
+# numba    : 0.56.4
+# llvmlite : 0.39.1
 
 python - <<'PY'
 from bevdepth.ops.voxel_pooling_inference import voxel_pooling_inference
@@ -76,9 +92,7 @@ print("Wrapper OK :", voxel_pooling_inference)          # should be a <function 
 PY
 ```
 
-
-
-### 1️⃣ Generate NuScenes Metadata
+### Generate NuScenes metadata
 
 ```bash
 mkdir -p data
