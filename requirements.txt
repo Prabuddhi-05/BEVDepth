@@ -1,12 +1,20 @@
-numba
-numpy
+# ───── low-level jit / math ─────
+llvmlite==0.39.1
+numba==0.56.4
+numpy>=1.23,<1.24
+
+# ───── data / utils ─────
 nuscenes-devkit
 opencv-python-headless
 pandas
-pytorch-lightning==1.6.0
 scikit-image
 scipy
-setuptools==59.5.0
 tensorboardX
-torch==1.9.0
-torchvision==0.10.0
+tqdm
+
+# ───── lightning trainer ─────
+pytorch-lightning==1.6.0
+
+# keep setuptools old enough for BEVDepth
+setuptools==59.5.0
+
