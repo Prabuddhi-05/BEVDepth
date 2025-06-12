@@ -34,7 +34,7 @@ docker run --gpus all -it \
   bevdepth:original /bin/bash
 ```
 
-- Update the GitHub folder path and dataset path as per your local directory.
+- Update the GitHub project folder path and dataset pathto match your local directory structure.
 
 ### 3️⃣ Restart Existing Container
 
