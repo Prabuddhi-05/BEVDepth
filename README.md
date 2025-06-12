@@ -27,11 +27,11 @@ docker build -t bevdepth:original .
 
 ```bash
 docker run --gpus all -it \
-  --name bevdepth:original \
+  --name bevdepth-original \
   --shm-size 16g \
   -v "$HOME/BEVDepth:/workspace/BEVDepth" \
   -v "/media/prabuddhi/Crucial X92/bevfusion-main/data/nuscenes:/workspace/data/nuScenes" \
-  bevdepth:original
+  bevdepth:original /bin/bash
 ```
 
 - Update the GitHub folder path and dataset path as per your local directory.
