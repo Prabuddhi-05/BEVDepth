@@ -98,7 +98,9 @@ wget https://github.com/Megvii-BaseDetection/BEVDepth/releases/download/v0.0.2/b
 ### 3️⃣ (Optional) Re-compile CUDA Ops (only if upgrading Torch/CUDA)
 
 ```bash
-# python setup.py clean --all && python setup.py develop --no-deps
+python setup.py clean --all
+rm -rf build/ BEVDepth.egg-info/
+python setup.py develop
 ```
 
 ---
