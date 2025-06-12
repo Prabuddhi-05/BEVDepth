@@ -32,18 +32,26 @@ class BEVDepthLightningModel(BaseBEVDepthLightningModel):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        # MODIFY YOUR DATA PATHS HERE (you generated infos here):
+        self.data_root = "/workspace/data/nuScenes"
+        self.ann_file_train = "/workspace/data/nuScenes_BEVDepth/nuscenes_infos_train.pkl"
+        self.ann_file_val = "/workspace/data/nuScenes_BEVDepth/nuscenes_infos_val.pkl"
+        self.ann_file_test = "/workspace/data/nuScenes_BEVDepth/nuscenes_infos_test.pkl"
+
+        # Keep everything else as original
         self.key_idxes = [-1]
-        self.head_conf['bev_backbone_conf']['in_channels'] = 80 * (
-            len(self.key_idxes) + 1)
+        self.head_conf['bev_backbone_conf']['in_channels'] = 80 * (len(self.key_idxes) + 1)
         self.head_conf['bev_neck_conf']['in_channels'] = [
             80 * (len(self.key_idxes) + 1), 160, 320, 640
         ]
         self.head_conf['train_cfg']['code_weights'] = [
             1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
         ]
+
         self.model = BaseBEVDepth(self.backbone_conf,
-                                  self.head_conf,
-                                  is_train_depth=True)
+                                   self.head_conf,
+                                   is_train_depth=True)
 
 
 if __name__ == '__main__':
