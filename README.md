@@ -105,7 +105,7 @@ python setup.py develop
 
 ---
 
-## 🚦 Running BEVDepth
+## Running BEVDepth
 
 ### Sanity Check: Evaluation
 
@@ -129,7 +129,7 @@ python bevdepth/exps/nuscenes/mv/bev_depth_lss_r50_256x704_128x128_24e_2key.py \
 
 ---
 
-## 📝 Code Changes Summary
+## Code Changes Summary
 
 | File                                            | Change                                             | Reason                           |
 | ----------------------------------------------- | -------------------------------------------------- | -------------------------------- |
@@ -139,7 +139,7 @@ python bevdepth/exps/nuscenes/mv/bev_depth_lss_r50_256x704_128x128_24e_2key.py \
 
 ---
 
-## 🤩 Library Versions (Fully Frozen)
+## Library Versions (Fully Frozen)
 
 ```
 torch-1.12.1+cu116        mmcv-full-1.6.0
@@ -153,7 +153,7 @@ numba-0.56.4              llvmlite-0.39.1
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 | Issue                             | Solution                                                           |
 | --------------------------------- | ------------------------------------------------------------------ |
