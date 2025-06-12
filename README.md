@@ -55,6 +55,7 @@ export PATH=$CUDA_HOME/bin:$PATH
 export CUDACXX=$CUDA_HOME/bin/nvcc
 ```
 ### Verify installation (Optional) 
+```bash
 python - <<'PY'
 import torch; print(torch.__version__, torch.version.cuda)
 PY
