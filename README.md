@@ -14,16 +14,16 @@ BEVDepth learns depth estimation from LiDAR-supervised data, but performs 3D obj
 | `bevdepth/exps/nuscenes/mv/bev_depth_lss_r50_256x704_128x128_24e_2key.py` | Modified the paths for generated infos. |
 ---
 
-## Quick Start Guide
+## Quick start guide
 
-### 1️⃣ Build Docker Image
+### 1️⃣ Build Docker image
 
 ```bash
 cd docker
 docker build -t bevdepth:original .
 ```
 
-### 2️⃣ Create and Run Docker Container
+### 2️⃣ Create and run Docker container
 
 ```bash
 docker run --gpus all -it \
