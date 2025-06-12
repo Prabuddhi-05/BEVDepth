@@ -100,7 +100,7 @@ wget https://github.com/Megvii-BaseDetection/BEVDepth/releases/download/v0.0.2/b
 ```bash
 python setup.py clean --all
 rm -rf build/ BEVDepth.egg-info/
-python setup.py develop
+python setup.py develop --no-deps
 ```
 
 ---
