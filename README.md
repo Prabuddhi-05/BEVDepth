@@ -36,7 +36,7 @@ docker run --gpus all -it \
 
 - Update the GitHub project folder path and dataset path to match your local directory structure.
 
-### 3️⃣ Restart Existing Container
+### 3️⃣ Restart existing container
 
 ```bash
 docker start -ai bevdepth:original
@@ -44,7 +44,7 @@ docker start -ai bevdepth:original
 
 ---
 
-## One-Time Setup Inside Docker
+## One-time setup inside Docker
 
 ### 0️⃣ Optional: Verify CUDA & Torch
 
