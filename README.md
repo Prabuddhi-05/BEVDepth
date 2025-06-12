@@ -63,7 +63,11 @@ PY
 ### 1️⃣ Generate NuScenes Metadata
 
 ```bash
+mkdir -p data
+ln -s /workspace/data/nuScenes data/nuScenes     
 mkdir -p /workspace/data/nuScenes_BEVDepth
+ln -s /workspace/data/nuScenes_BEVDepth ./data/nuScenes_BEVDepth
+cd /workspace/BEVDepth
 python scripts/gen_info.py \
   --dataroot /workspace/data/nuScenes \
   --save_dir /workspace/data/nuScenes_BEVDepth
