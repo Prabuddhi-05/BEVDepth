@@ -1,6 +1,5 @@
 # BEVDepth 
-
-BEVDepth is a 3D object detector with a depth estimation strategy. This repo is the fork of [Megvii-BaseDetection/BEVDepth](https://github.com/Megvii-BaseDetection/BEVDepth) with a conflict-free Docker stack.
+BEVDepth learns depth estimation from LiDAR-supervised data, but performs 3D object detection from camera images alone. This repo is the fork of [Megvii-BaseDetection/BEVDepth](https://github.com/Megvii-BaseDetection/BEVDepth) with a conflict-free Docker stack.
 (Torch 1.12/cu116, mmcv-full 1.6,mmdet 2.25, mmdet3d 1.0.0rc4, mmseg 0.26)
 
 ---
@@ -9,9 +8,9 @@ BEVDepth is a 3D object detector with a depth estimation strategy. This repo is 
 
 | Item                                                                      | Purpose                                                                        |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| `docker/Dockerfile`                                                       | One-stage image build with full CUDA ops compilation.                          |
+| `docker/Dockerfile`                                                       | For image build.                          |
 | `requirements.txt` & `constraints.txt`                                    | All Python package versions pinned to avoid conflicts.                         |
-| `scripts/gen_info.py`                                                     | MOdified: accepts `--dataroot` and `--save_dir` for flexible output locations. |
+| `scripts/gen_info.py`                                                     | Modified: accepts `--dataroot` and `--save_dir` for output locations. |
 | `bevdepth/exps/nuscenes/mv/bev_depth_lss_r50_256x704_128x128_24e_2key.py` | Modified experiment file for correct dataset paths and unique experiment name. |
 ---
 
@@ -28,19 +27,19 @@ docker build -t bevdepth:original .
 
 ```bash
 docker run --gpus all -it \
-  --name bevdepth-cu116 \
+  --name bevdepth:original \
   --shm-size 16g \
   -v "$HOME/BEVDepth:/workspace/BEVDepth" \
   -v "/media/prabuddhi/Crucial X92/bevfusion-main/data/nuscenes:/workspace/data/nuScenes" \
-  bevdepth:cu116
+  bevdepth:original
 ```
 
-- Update dataset path as per your local directory.
+- Update the GitHub folder path and dataset path as per your local directory.
 
 ### 3️⃣ Restart Existing Container
 
 ```bash
-docker start -ai bevdepth-cu116
+docker start -ai bevdepth:original
 ```
 
 ---
@@ -50,6 +49,11 @@ docker start -ai bevdepth-cu116
 ### 0️⃣ Optional: Verify CUDA & Torch
 
 ```bash
+cd /workspace/BEVDepth
+export CUDA_HOME=/usr/local/cuda
+export PATH=$CUDA_HOME/bin:$PATH
+export CUDACXX=$CUDA_HOME/bin/nvcc
+
 python - <<'PY'
 import torch; print(torch.__version__, torch.version.cuda)
 PY
