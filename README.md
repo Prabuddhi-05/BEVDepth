@@ -16,14 +16,14 @@ BEVDepth learns depth estimation from LiDAR-supervised data, but performs 3D obj
 
 ## Quick start guide
 
-### 1️⃣ Build Docker image
+### Build Docker image
 
 ```bash
 cd docker
 docker build -t bevdepth:original .
 ```
 
-### 2️⃣ Create and run Docker container
+### Create and run Docker container
 
 ```bash
 docker run --gpus all -it \
@@ -36,7 +36,7 @@ docker run --gpus all -it \
 
 - Update the GitHub project folder path and dataset path to match your local directory structure.
 
-### 3️⃣ Restart existing container
+### Restart existing container
 
 ```bash
 docker start -ai bevdepth:original
@@ -46,14 +46,15 @@ docker start -ai bevdepth:original
 
 ## One-time setup inside Docker
 
-### 0️⃣ Optional: Verify CUDA & Torch
+### Set CUDA environment variables
 
 ```bash
 cd /workspace/BEVDepth
 export CUDA_HOME=/usr/local/cuda
 export PATH=$CUDA_HOME/bin:$PATH
 export CUDACXX=$CUDA_HOME/bin/nvcc
-
+```
+### Verify installation (Optional) 
 python - <<'PY'
 import torch; print(torch.__version__, torch.version.cuda)
 PY
@@ -73,6 +74,8 @@ from bevdepth.ops.voxel_pooling_inference import voxel_pooling_inference
 print("Wrapper OK :", voxel_pooling_inference)          # should be a <function …>
 PY
 ```
+
+
 
 ### 1️⃣ Generate NuScenes Metadata
 
