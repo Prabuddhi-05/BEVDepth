@@ -47,7 +47,7 @@ docker run --gpus all -it \
 ### Restart existing container
 
 ```bash
-docker start -ai bevdepth:original
+docker start -ai bevdepth-original
 ```
 
 ---
